@@ -1,16 +1,15 @@
-const express = require("express")
 const connectToMongo = require('./Db')
+const express = require("express")
 require('dotenv').config()
 
 connectToMongo();
-const app = express();
-const port = process.env.SERVER_PORT;
+const app = express()
+const port = process.env.SERVER_PORT || 5000// server port number
 
-app.get('/',(req,res)=>{
-    res.send("hello")
-})
+app.use(express.json())
 
+app.use('/api/auth', require('./routes/auth'));
 
 app.listen(port ,() => {
-    console.log(`Example app listening on port https://localhost:${port}`)
+    console.log(`Example app listening on port http://localhost:${port}`)
   })
