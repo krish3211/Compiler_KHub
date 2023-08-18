@@ -8,7 +8,7 @@ const fetchuser = require('../middleware/fetchauth');
 require("dotenv").config();
 const JWT_SECRET = process.env.JWT_SECRET;
 
-// Route 1: Create a new user method: post "/api/auth/createuser"
+// Route 1: Create a new user method
 router.post("/createuser", [body("email", "Invalid email").isEmail(), body("branch", "Invalid Branch name").isLength({ max: 3 })], async (req, res) => {
   // If there are errors , return bed 404 request.
   const errors = validationResult(req);
@@ -38,7 +38,7 @@ router.post("/createuser", [body("email", "Invalid email").isEmail(), body("bran
   }
 });
 
-// Route 2: Authenticate a User using : post"/api/auth/login".
+// Route 2: Authenticate a User using 
 router.post("/login", [body("email", "Invalid email").isEmail(), body("password", "Password cannot be blank").exists()], async (req, res) => {
   // If there are errors , return bed 404 request.
   const errors = validationResult(req);
@@ -72,7 +72,7 @@ router.post("/login", [body("email", "Invalid email").isEmail(), body("password"
   }
 });
 
-// Route 3: Get loggerin User Details using : post"/api/auth/getuser".
+// Route 3: Get loggerin User Details using 
 router.get("/getuserprofile", fetchuser ,async (req, res) => {
   try {
     userId = req.user.id;
@@ -85,6 +85,7 @@ router.get("/getuserprofile", fetchuser ,async (req, res) => {
 }
 );
 
+// Route 4: Get all User and  admin auth 
 router.get("/usersprofile", fetchuser,async(req,res)=>{
   try{
     userrole = req.user.role;
@@ -101,6 +102,7 @@ router.get("/usersprofile", fetchuser,async(req,res)=>{
   }
 })
 
+// Route 5 : update all user and admin auth
 router.put("/usersprofile/update/:id",fetchuser,async(req,res)=>{
   const {name,email,year,branch,role} = req.body;
   try {
@@ -140,6 +142,7 @@ router.put("/usersprofile/update/:id",fetchuser,async(req,res)=>{
   }
 })
 
+// Route 6 : delete all user and admin auth
 router.delete('/usersprofile/delete/:id', fetchuser, async (req, res) => {
   try {
       // Find the note to be delete and delete it

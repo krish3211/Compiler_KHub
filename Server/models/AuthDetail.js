@@ -27,7 +27,9 @@ const UserSchema = new Schema({
         enum: {
         values: ['user', 'admin'],
         message: '{VALUE} is not supported'
-      }},
+      },
+      required: true,
+    },
     date:{
         type: Date,
         default: Date.now

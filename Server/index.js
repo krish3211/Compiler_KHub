@@ -10,6 +10,7 @@ app.use(express.json())
 
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/compiler',require('./routes/compiler'));
+app.use('/api/CodingQuestion', require('./routes/PQustion'));
 
 app.listen(port ,() => {
     console.log(`Example app listening on port http://localhost:${port}`)
