@@ -46,7 +46,7 @@ router.get("/fetchallques", fetchuser, async (req, res) => {
       }
     }
   );
-
+// update question by admin
 router.put("/updateques/:id", fetchuser, async (req, res) => {
   const { title, question, explanation, testcases, level } = req.body;
   try {
@@ -85,7 +85,7 @@ router.put("/updateques/:id", fetchuser, async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
-
+// deleting question by admin
 router.delete("/deleteques/:id", fetchuser, async (req, res) => {
   try {
     // Find the note to be delete and delete it
